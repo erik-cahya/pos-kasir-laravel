@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
+});
+
+Route::get('/template', function(){
+    return view('layouts.master');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ROUTES FOR WAKIL KEPALA SEKOLAH
+
+// ROUTES FOR KEPALA BAGIAN
+
+// ROUTES FOR ADMIN SARANA PRASARANA

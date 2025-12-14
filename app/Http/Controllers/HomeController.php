@@ -28,7 +28,7 @@ class HomeController extends Controller
         if (Auth::user()->role == 'admin') {
             $user = User::where('id', Auth::user()->id)->first();
             // toastr()->success('Selamat datang '.Auth::user()->nama);
-            return view('home', compact('user'));
+            return view('admin.index', compact('user'));
         }else if(Auth::user()->role == 'wakasek'){
             $user = User::where('id', Auth::user()->id)->first();
             // toastr()->success('Selamat datang '.Auth::user()->nama);
