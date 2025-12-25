@@ -40,6 +40,23 @@ class RuangController extends Controller
         return view('ruang.index', $data);
     }
 
+
+    public function stok_edit(Request $request, $id)
+    {
+
+
+        BarangModel::where('id', $id)->update([
+            'stok' => $request->restok
+        ]);
+
+        $alert = [
+            'message' => 'Stock Berhasil Diubah !',
+            'class' => 'alert-success',
+        ];
+
+        return redirect()->route('ruang.index')->with('alert', $alert);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

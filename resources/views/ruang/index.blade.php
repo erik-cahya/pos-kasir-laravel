@@ -7,7 +7,7 @@
         <i class="fa fa-plus"></i> Insert Data</button>
     <a href="index.php?page=barang&stok=yes" class="btn btn-warning btn-md mr-2">
         <i class="fa fa-list"></i> Sortir Stok Kurang</a>
-    <a href="index.php?page=barang" class="btn btn-success btn-md">
+    <a href="{{ route('ruang.index') }}" class="btn btn-success btn-md">
         <i class="fa fa-refresh"></i> Refresh Data</a>
     <div class="clearfix"></div>
     <br />
@@ -66,10 +66,9 @@
 
                             <td>
                                 @if ($data_barang->stok <= 3)
-                                    <form method="POST" class="d-inline" action="fungsi/edit/edit.php?stok=edit">
+                                    <form method="POST" class="d-inline" action="{{ route('barang.stok-edit', $data_barang->id) }}" onsubmit="return confirm('Yakin ingin menambah stok?')">
+                                        @csrf
                                         <input type="text" name="restok" class="form-control">
-                                        <input type="hidden" name="id" value="#"
-                                            class="form-control">
                                         <button class="btn btn-primary btn-sm mt-2">
                                             Restok
                                         </button>

@@ -28,6 +28,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/kategori', KategoriController::class)->except(['create', 'show']);
 Route::resource('/ruang', RuangController::class);
+Route::post('/ruang/stok-edit/{id}', [RuangController::class, 'stok_edit'])->name('barang.stok-edit');
 
 // ROUTES FOR WAKIL KEPALA SEKOLAH
 
