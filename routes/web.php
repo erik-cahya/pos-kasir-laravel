@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,14 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/template', function(){
+Route::get('/template', function () {
     return view('layouts.master');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/kategori', KategoriController::class)->except(['create', 'show']);
 
 // ROUTES FOR WAKIL KEPALA SEKOLAH
 
