@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_barang');
+            $table->string('id_barang')->unique();
             $table->integer('id_kategori');
             $table->text('nama_barang');
             $table->string('merk');
-            $table->string('harga_beli');
-            $table->string('harga_jual');
+            $table->integer('harga_beli');
+            $table->integer('harga_jual');
             $table->string('satuan_barang');
-            $table->text('stok');
-            $table->string('tgl_input');
-            $table->string('tgl_update');
+            $table->integer('stok');
+            $table->dateTime('tgl_input');
+            $table->dateTime('tgl_update');
             $table->timestamps();
         });
     }
