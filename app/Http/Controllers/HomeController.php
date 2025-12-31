@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+// use Auth;
+
+use App\Models\BarangModel;
+use App\Models\KategoriModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,15 +29,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data['countBarang'] = BarangModel::count();
+        $data['countStock'] = BarangModel::sum('stok');
+        $data['countKategori'] = KategoriModel::count();
+
+        // dd($data['countStock']);
         if (Auth::user()->role == 'admin') {
-            $user = User::where('id', Auth::user()->id)->first();
+            $data['user'] = User::where('id', Auth::user()->id)->first();
             // toastr()->success('Selamat datang '.Auth::user()->nama);
-            return view('admin.index', compact('user'));
-        }else if(Auth::user()->role == 'wakasek'){
-            $user = User::where('id', Auth::user()->id)->first();
+            return view('admin.index', $data);
+        } else if (Auth::user()->role == 'wakasek') {
+            $data['user'] = User::where('id', Auth::user()->id)->first();
             // toastr()->success('Selamat datang '.Auth::user()->nama);
-            return view('home', compact('user'));
+            return view('home', $data);
         }
-        
     }
 }

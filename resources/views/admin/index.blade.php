@@ -9,11 +9,11 @@
         <div class="col-md-3 mb-3">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h6 class="pt-2"><i class="fas fa-cubes"></i> Nama Barang</h6>
+                    <h6 class="pt-2"><i class="fas fa-cubes"></i> Jumlah Barang</h6>
                 </div>
                 <div class="card-body">
                     <center>
-                        <h1>200</h1>
+                        <h1>{{ $countBarang }}</h1>
                     </center>
                 </div>
                 <div class="card-footer">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-body">
                     <center>
-                        <h1>200</h1>
+                        <h1>{{ $countStock }}</h1>
                     </center>
                 </div>
                 <div class="card-footer">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card-body">
                     <center>
-                        <h1>200</h1>
+                        <h1>{{ $countKategori }}</h1>
                     </center>
                 </div>
                 <div class="card-footer">
